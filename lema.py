@@ -51,8 +51,53 @@ def aplicar_lema_bombeamento(pertence_linguagem, w, p):
 
     return "\nNenhuma violação encontrada. O lema se manteve para todas as divisões testadas!"
 
-# Exemplo de uso
+# exemplos de uso
+
+# teste 1: Cadeia válida, número igual de 'a's e 'b's (n = 3)
+# espera que o lema seja violado, pois a linguagem não é regular
 w = "aaabbb"
 p = 3
-resultado = aplicar_lema_bombeamento(pertence_linguagem, w, p)
-print(resultado)
+print("\nTeste 1: w = 'aaabbb', p = 3")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
+
+# teste 2: Cadeia válida, número igual de 'a's e 'b's (n = 4)
+# testa com uma palavra maior. O lema deve ser violado também
+w = "aaaabbbb"
+p = 4
+print("\nTeste 2: w = 'aaaabbbb', p = 4")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
+
+# teste 3: Cadeia inválida para a linguagem (2 'a's e 3 'b's)
+# o lema não se aplica corretamente, pois w já não está em L
+w = "aabbb"
+p = 2
+print("\nTeste 3: w = 'aabbb', p = 2")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
+
+# teste 4: Cadeia com ordem intercalada (não está no formato a^n b^n)
+# deve retornar False rapidamente em alguma repetição
+w = "abab"
+p = 2
+print("\nTeste 4: w = 'abab', p = 2")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
+
+# teste 5: Cadeia válida pequena, n = 1
+# mesmo com cadeia curta, pode haver violação dependendo da divisão
+w = "ab"
+p = 1
+print("\nTeste 5: w = 'ab', p = 1")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
+
+# teste 6: Cadeia vazia (pertence à linguagem, pois n = 0)
+# porém o lema não se aplica pois |w| < p
+w = ""
+p = 1
+print("\nTeste 6: w = '', p = 1")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
+
+# teste 7: Cadeia válida com n = 5
+# teste com cadeia maior, deve violar o lema também
+w = "aaaaabbbbb"
+p = 5
+print("\nTeste 7: w = 'aaaaabbbbb', p = 5")
+print(aplicar_lema_bombeamento(pertence_linguagem, w, p))
